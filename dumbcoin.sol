@@ -19,9 +19,9 @@ contract DumbCoin {
     uint256 public totalTokensIssued = 0;
     uint256 public totalBonusTokensIssued = 0;
 
-    function name() constant returns (string) { return "DumbCoin"; }
-    function symbol() constant returns (string) { return "DUM"; }
-    function decimals() constant returns (uint8) { return 18; }
+    function name() public constant returns (string) { return "DumbCoin"; }
+    function symbol() public constant returns (string) { return "DUM"; }
+    function decimals() public constant returns (uint8) { return 18; }
 
     uint256 public totalSupply = 100000 * (10 ** 18);
     
@@ -146,7 +146,7 @@ contract DumbCoin {
                 if (random_number2 <= 60) {
                     // 10% BONUS
                     bonusTokensIssued = tokensIssued / 10;
-                } else if (random_number2 <= 81) {
+                } else if (random_number2 <= 80) {
                     // 20% BONUS
                     bonusTokensIssued = tokensIssued / 5;
                 } else if (random_number2 <= 90) {
