@@ -23,12 +23,11 @@ contract DumbCoin {
     function symbol() public constant returns (string) { return "DUM"; }
     function decimals() public constant returns (uint8) { return 18; }
 
-    uint256 public totalSupply = 100000 * (10 ** 18);
+    uint256 public totalSupply = 1000000 * (10 ** 18);
     
-    function DumbCoin(address _fundsWallet) {
-        owner = _fundsWallet;
+    function DumbCoin() {
+        owner = msg.sender;
 
-        // initially assign all tokens to the owner
         balances[owner] = totalSupply;
         Transfer(0x0, owner, totalSupply);
     }
@@ -117,8 +116,8 @@ contract DumbCoin {
         return token.transfer(owner, amount);
     }
 
-    function getStats() constant returns (uint256, uint256, uint256, bool) {
-        return (totalContribution, totalSupply, totalBonusTokensIssued, purchasingAllowed);
+    function getStats() constant returns (uint256, uint256, uint256, uint256, bool) {
+        return (totalContribution, totalSupply, totalTokensIssued, totalBonusTokensIssued, purchasingAllowed);
     }
 
     function() payable {
